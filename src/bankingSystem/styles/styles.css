@@ -1,0 +1,119 @@
+.root {
+    -fx-font-family: "Segoe UI";
+    -fx-background-color: #f4f8fb;
+}
+
+.label {
+    -fx-text-fill: #212529;
+    -fx-font-size: 14px;
+}
+
+.heading {
+    -fx-text-fill: #0d6efd;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
+.text-field {
+    -fx-background-color: white;
+    -fx-border-color: #4da3ff;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 8;
+}
+
+.password-field {
+    -fx-background-color: white;
+    -fx-border-color: #4da3ff;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 8;
+}
+
+.text-area {
+    -fx-border-color: #4da3ff;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+}
+
+.text-area .content {
+    -fx-background-color: white;
+}
+
+.button {
+    -fx-background-color: #4d56ff;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10;
+    -fx-cursor: hand;
+    -fx-padding: 8 15 8 15;
+}
+
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #4da3ff;
+    -fx-border-width: 2;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #4da3ff;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.combo-box {
+    -fx-background-color: white;
+    -fx-border-color: #4da3ff;
+    -fx-border-radius: 8;
+}
+
+.menu-button {
+    -fx-background-color: #4dfff9;
+    -fx-text-fill: white;
+}
+
+.scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.card {
+    -fx-background-color: white;
+    -fx-background-radius: 15;
+    -fx-padding: 20;
+}
+
+.card-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #4da3ff;
+}
+
+.card-value {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #212529;
+}
+
+.dialog-pane {
+    -fx-background-color: white;
+}
+
+.dialog-pane .header-panel {
+    -fx-background-color: #4da3ff;
+}
+
+.dialog-pane .header-panel .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
