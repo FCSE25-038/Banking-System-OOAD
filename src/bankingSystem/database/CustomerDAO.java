@@ -346,23 +346,113 @@ public class CustomerDAO {
     public boolean deleteCustomer(
             String customerId) {
 
-        String sql =
-                "DELETE FROM customers " +
-                        "WHERE customer_id = ?";
-
         try (
                 Connection connection =
-                        DatabaseConnection.getConnection();
-
-                PreparedStatement statement =
-                        connection.prepareStatement(sql)
+                        DatabaseConnection.getConnection()
         ) {
 
-            statement.setString(
-                    1,
-                    customerId);
+            connection.setAutoCommit(false);
 
-            return statement.executeUpdate() > 0;
+            try {
+
+                String deleteTransactions =
+                        "DELETE bt FROM bank_transactions bt " +
+                                "INNER JOIN accounts a " +
+                                "ON bt.account_number = a.account_number " +
+                                "WHERE a.customer_id = ?";
+
+                try (
+                        PreparedStatement statement =
+                                connection.prepareStatement(
+                                        deleteTransactions)
+                ) {
+
+                    statement.setString(
+                            1,
+                            customerId);
+
+                    statement.executeUpdate();
+                }
+
+                String deleteAccounts =
+                        "DELETE FROM accounts " +
+                                "WHERE customer_id = ?";
+
+                try (
+                        PreparedStatement statement =
+                                connection.prepareStatement(
+                                        deleteAccounts)
+                ) {
+
+                    statement.setString(
+                            1,
+                            customerId);
+
+                    statement.executeUpdate();
+                }
+
+                String deleteIndividuals =
+                        "DELETE FROM individual_customers " +
+                                "WHERE customer_id = ?";
+
+                try (
+                        PreparedStatement statement =
+                                connection.prepareStatement(
+                                        deleteIndividuals)
+                ) {
+
+                    statement.setString(
+                            1,
+                            customerId);
+
+                    statement.executeUpdate();
+                }
+
+                String deleteCompanies =
+                        "DELETE FROM company_customers " +
+                                "WHERE customer_id = ?";
+
+                try (
+                        PreparedStatement statement =
+                                connection.prepareStatement(
+                                        deleteCompanies)
+                ) {
+
+                    statement.setString(
+                            1,
+                            customerId);
+
+                    statement.executeUpdate();
+                }
+
+                String deleteCustomer =
+                        "DELETE FROM customers " +
+                                "WHERE customer_id = ?";
+
+                try (
+                        PreparedStatement statement =
+                                connection.prepareStatement(
+                                        deleteCustomer)
+                ) {
+
+                    statement.setString(
+                            1,
+                            customerId);
+
+                    int rows =
+                            statement.executeUpdate();
+
+                    connection.commit();
+
+                    return rows > 0;
+                }
+
+            } catch (SQLException e) {
+
+                connection.rollback();
+
+                throw e;
+            }
 
         } catch (SQLException e) {
 
